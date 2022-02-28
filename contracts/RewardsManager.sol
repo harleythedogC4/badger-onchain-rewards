@@ -381,9 +381,9 @@ contract RewardsManager {
         // to get a non-zero balance and get points again
         // NOTE: Commented out as it actually seems to cost more gas due to refunds being capped
         // FOR AUDITORS: LMK if you can figure this out
-        // for(uint epochId = epochStart + 1; epochId < epochEnd; ++epochId) {
-        //     delete lastUserAccrueTimestamp[epochId][vault][user];
-        // }
+        for(uint epochId = epochStart + 1; epochId < epochEnd; ++epochId) {
+            delete lastUserAccrueTimestamp[epochId][vault][user];
+        }
         
         // For last epoch, we don't delete the shares, but we delete the points
         delete points[epochEnd][vault][user];
